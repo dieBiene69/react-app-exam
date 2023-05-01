@@ -38,9 +38,19 @@ function App() {
       .then(function(response) {
         return response.json()
       }).then(function(data) {
-        setTempSeries(data["temp"]);
-        setHumSeries(data["hum"]);
-        setLightSeries(data["light"]);
+
+        //NEU!!
+      console.log(data)
+        const chartData =data.map((obj)=>{
+          return{
+            temp: obj["temp"],
+            hum: obj["hum"],
+            light: obj["light"],
+          };
+        });
+        setTempSeries(chartData.map((obj) => obj.temp));
+        setHumSeries(chartData.map((obj) => obj.hum));
+        setLightSeries(chartData.map((obj) => obj.light));
       })
       .catch((err) => {
         console.log(err);
@@ -58,31 +68,39 @@ function App() {
   // if "tempSeries" is updated, we should also update the graph data
   useEffect(() => {
     updateData();
-  }, [tempSeries]);
+  }, [tempSeries, humSeries, lightSeries]);
 
   // ApexCharts needs some default options to know what to show
   const options = {
-    options: {
-      chart: {
-        height: 350,
-        type: "area",
+    chart: {
+      height: 350,
+      type: "area",
+    },
+    dataLabels: {
+      enabled: true,
+    },
+    stroke: {
+      curve: "smooth",
+    },
+    noData: {
+      text: "Loading...",
+    },
+    xaxis: {
+      title: {
+        text: "Zeit",
       },
-      dataLabels: {
-        enabled: true,
-      },
-      stroke: {
-        curve: "smooth",
-      },
-      noData: {
-        text: "Loading...",
+    },
+    yaxis: {
+      title: {
+        text: "Temperatur / Luftfeuchtigkeit / Licht",
       },
     },
   };
-
   return (
     <div className="App">
       <Header/>
       <Chart options={options} series={dataSeries} type="area" height={350} />
+      
     </div>
   );
 }
