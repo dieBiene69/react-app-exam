@@ -2,16 +2,13 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import Header from "./components/Header";
-//import Home from "./pages/Home";
 
 function App() {
-
- 
   const [tempSeries, setTempSeries] = useState([]);
   const [humSeries, setHumSeries] = useState([]);
   const [lightSeries, setLightSeries] = useState([]);
+  const [dates, setDates] = useState([]);
   const [dataSeries, setDataSeries] = useState([]);
-
 
   // Updates the data series
   const updateData = () => {
@@ -32,38 +29,28 @@ function App() {
   };
 
   // Upon loading the page, load in data from file or server
-  // In this example, it just loads a static file from the "public" folder
   useEffect(() => {
     fetch("/Values")
       .then(function(response) {
         return response.json()
       }).then(function(data) {
-
-        //NEU!!
-      console.log(data)
-        const chartData =data.map((obj)=>{
-          return{
+        const chartData = data.map((obj) => {
+          return {
             temp: obj["temp"],
             hum: obj["hum"],
             light: obj["light"],
+            date: new Date(obj["date"]).toLocaleString(),
           };
         });
         setTempSeries(chartData.map((obj) => obj.temp));
         setHumSeries(chartData.map((obj) => obj.hum));
         setLightSeries(chartData.map((obj) => obj.light));
+        setDates(chartData.map((obj) => obj.date));
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-
-  /*    // Fetch data from ESP32
-    fetch("http://your_esp32_ip_address/data")
-      .then((response) => response.json())
-      .then((data) => {
-        // Extract temperature and time data
-        const temperature = data.temperature;
-        const time = data.time;*/
 
   // if "tempSeries" is updated, we should also update the graph data
   useEffect(() => {
@@ -89,6 +76,7 @@ function App() {
       title: {
         text: "Zeit",
       },
+      categories: dates,
     },
     yaxis: {
       title: {
@@ -98,9 +86,8 @@ function App() {
   };
   return (
     <div className="App">
-      <Header/>
+      <Header />
       <Chart options={options} series={dataSeries} type="area" height={350} />
-      
     </div>
   );
 }
