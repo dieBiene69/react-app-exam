@@ -13,6 +13,7 @@ function App() {
   // Updates the data series
   const updateData = () => {
     setDataSeries([
+
       {
         name: "Temperature",
         data: tempSeries,
@@ -31,9 +32,10 @@ function App() {
   // Upon loading the page, load in data from file or server
   useEffect(() => {
     fetch("/Values")
-      .then(function(response) {
-        return response.json()
-      }).then(function(data) {
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
         const chartData = data.map((obj) => {
           return {
             temp: obj["temp"],
@@ -42,8 +44,8 @@ function App() {
             date: new Date(obj["date"]).toLocaleString(),
           };
         });
-        setTempSeries(chartData.map((obj) => obj.temp));
-        setHumSeries(chartData.map((obj) => obj.hum));
+        setTempSeries(chartData.map((obj) => obj.temp.toFixed(2)));
+        setHumSeries(chartData.map((obj) => obj.hum.toFixed(2)));
         setLightSeries(chartData.map((obj) => obj.light));
         setDates(chartData.map((obj) => obj.date));
       })
@@ -62,6 +64,9 @@ function App() {
     chart: {
       height: 350,
       type: "area",
+      background: "#f5f5f5",
+      fontFamily: "Arial, sans-serif",
+      foreColor: "grey",
     },
     dataLabels: {
       enabled: true,
@@ -73,22 +78,34 @@ function App() {
       text: "Loading...",
     },
     xaxis: {
-      title: {
-        text: "Zeit",
-      },
+        style: {
+          fontSize: "14px",
+          fontWeight: 600,
+          fontFamily: "Arial, sans-serif",
+          color: "#333333",
+        },
       categories: dates,
     },
     yaxis: {
-      title: {
-        text: "Temperatur / Luftfeuchtigkeit / Licht",
+        style: {
+          fontSize: "14px",
+          fontWeight: 600,
+          fontFamily: "Arial, sans-serif",
+          color: "#333333",
+            
+        },
       },
-    },
-  };
+    };
+
   return (
     <div className="App">
       <Header />
-      <Chart options={options} series={dataSeries} type="area" height={350} />
+      <Chart options={{ ...options, title: { text: "All values" } }} series={dataSeries} type="area" height={350} />
+      <Chart options={{ ...options, title: { text: "Temperature" } }} series={[{ name: "Temperature", data: tempSeries }]} type="area" height={350} />
+      <Chart options={{ ...options, title: { text: "Humidity" } }} series={[{ name: "Humidity", data: humSeries }]} type="area" height={350} />
+      <Chart options={{ ...options, title: { text: "Light" } }} series={[{ name: "Light", data: lightSeries }]} type="area" height={350} />
     </div>
+ 
   );
 }
 
