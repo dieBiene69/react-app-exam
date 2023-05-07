@@ -1,23 +1,70 @@
-# EdgeToApp
-This repository contains source code from the EdgeToApp elective at Kristiania University ([PGR212](https://www.kristiania.no/en/syllabus/school-of-economics-innovation-and-technology/first-cycle-degree/pgr212/from-edge-to-app/)). The topic teaches Full Stack development based on the MERN stack with data collected from an Edge Device. Unless noted otherwise, all examples are complete PlatformIO projects for the [LectureFeather](https://github.com/jenschr/LectureFeather) board (Lecture 1-5) or VSCode/Node projects (Lecture 6-12).
+# Getting Started with Create React App
 
-The [LectureFeather](https://github.com/jenschr/LectureFeather) board is made especially for the topic and it's based on a ESP32-S3 with 8Mb Flash and no PSRAM. It has builtin sensors for ambient air (temperature & humidity), Light (visible + IR), Acceleration and magnetism.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Usage
-To run any of the examples, clone or download this repo and open the relevant folder in VSCode. For PlatformIO projects, VS Code will be setup automatically based on the platformio.ini file. For Node projects, always:
+## Available Scripts
 
-- open a terminal window
-- go to the project folder
-- run `npm i` to install the required modules
-- start the project with `node index.js` / `node app.js` for Node projects, or `npm start` for React projects. For React Native / Expo, see Lecture 11 slides
+In the project directory, you can run:
 
-## Troubleshooting
-The hardware was not pain free as the chip was quite new when the topic started. Support for the chip get's better by the month, but I wrote up a [long article on how to solve the most common issues with the ESP32-S3](https://flashgamer.com/blog/comments/solving-platformio-issues-with-the-adafruit-feather-s3).
+### `npm start`
 
-## Example files
-The example files are organized according to the planned structure of the topic. In reality, we spent more time than anticipated on the first lectures for the first year on the topic (2023) but adjustments will be made to the material for future semesters.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Note to self when adding files
-The React and React Native project generators will add GIT files. These don't like to be inside another project, so I must delete all .git and .gitignore files when I add them to this repo. That's not enough however. Submodules are also added by default and these are cached. After removing the git files from each project, we must then remove any cached files using:
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-`git rm --cached Foldername`
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

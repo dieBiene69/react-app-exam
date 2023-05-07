@@ -10,6 +10,7 @@ function App() {
   const [dates, setDates] = useState([]);
   const [dataSeries, setDataSeries] = useState([]);
 
+
   // Updates the data series
   const updateData = () => {
     setDataSeries([
@@ -60,8 +61,10 @@ function App() {
     updateData();
   }, [tempSeries, humSeries, lightSeries]);
 
+
   // ApexCharts needs some default options to know what to show
   const options = {
+
     colors: ['#ff6347', '#7ac5cd', '#ffb90f'],
     chart: {
       height: 350,
@@ -107,10 +110,18 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Chart options={{ ...options, title: { text: "All values" }}} series={dataSeries} type="area" height={350} />
-      <Chart options={{ ...options, title: { text: "Temperature" },colors: ['#ff6347'], }} series={[{ name: "Temperature", data: tempSeries }]} type="area" height={350}/>
-      <Chart options={{ ...options, title: { text: "Humidity" },colors: ['#7ac5cd'], }} series={[{ name: "Humidity", data: humSeries }]} type="area" height={350} />
-      <Chart options={{ ...options, title: { text: "Light" },colors: ['#ffb90f'], }} series={[{ name: "Light", data: lightSeries }]} type="area" height={350} />
+      <Chart options={{ ...options, 
+        title: { text: "All values" }}} series={dataSeries} type="area" height={350} />
+      <Chart options={{ ...options, 
+        title: { text: "Temperature" },
+        colors: ['#ff6347'], }} series={[{ name: "Temperature", data: tempSeries }]} type="area" height={350}/>
+      <Chart options={{ ...options,
+        title: { text: "Humidity" },
+        colors: ['#7ac5cd'],
+         }} series={[{ name: "Humidity", data: humSeries }]} type="area" height={350} />
+      <Chart options={{ ...options,
+        title: { text: "Light" },
+        colors: ['#ffb90f'], }} series={[{ name: "Light", data: lightSeries }]} type="area" height={350} />
     </div>
  
   );
