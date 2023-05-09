@@ -107,24 +107,127 @@ function App() {
       },
     };
 
-  return (
-    <div className="App">
-      <Header />
-      <Chart options={{ ...options, 
-        title: { text: "All values" }}} series={dataSeries} type="area" height={350} />
-      <Chart options={{ ...options, 
-        title: { text: "Temperature" },
-        colors: ['#ff6347'], }} series={[{ name: "Temperature", data: tempSeries }]} type="area" height={350}/>
-      <Chart options={{ ...options,
-        title: { text: "Humidity" },
-        colors: ['#7ac5cd'],
-         }} series={[{ name: "Humidity", data: humSeries }]} type="area" height={350} />
-      <Chart options={{ ...options,
-        title: { text: "Light" },
-        colors: ['#ffb90f'], }} series={[{ name: "Light", data: lightSeries }]} type="area" height={350} />
-    </div>
- 
-  );
+    return (
+      <div className="App">
+        <Header />
+        <Chart
+          options={{
+            ...options,
+            title: { text: "All values" },
+            xaxis: {
+              ...options.xaxis,
+              categories: dates,
+            },
+          }}
+          series={dataSeries}
+          type="area"
+          height={350}
+        />
+        <Chart
+          options={{
+            ...options,
+            title: { text: "Temperature" },
+            colors: ["#ff6347"],
+            xaxis: {
+              ...options.xaxis,
+              categories: dates,
+            },
+          }}
+          series={[{ name: "Temperature", data: tempSeries }]}
+          type="area"
+          height={350}
+        />
+        <Chart
+          options={{
+            ...options,
+            title: { text: "Humidity" },
+            colors: ["#7ac5cd"],
+            xaxis: {
+              ...options.xaxis,
+              categories: dates,
+            },
+          }}
+          series={[{ name: "Humidity", data: humSeries }]}
+          type="area"
+          height={350}
+        />
+        <Chart
+          options={{
+            ...options,
+            title: { text: "Light" },
+            colors: ["#ffb90f"],
+            xaxis: {
+              ...options.xaxis,
+              categories: dates,
+            },
+          }}
+          series={[{ name: "Light", data: lightSeries }]}
+          type="area"
+          height={350}
+        />
+      </div>
+    );
+    return (
+      <div className="App">
+        <Header />
+        <Chart
+          options={{
+            ...options,
+            title: { text: "All values" },
+            xaxis: {
+              ...options.xaxis,
+              categories: dates,
+            },
+          }}
+          series={dataSeries}
+          type="area"
+          height={350}
+        />
+        <Chart
+          options={{
+            ...options,
+            title: { text: "Temperature" },
+            colors: ["#ff6347"],
+            xaxis: {
+              ...options.xaxis,
+              categories: dates,
+            },
+          }}
+          series={[{ name: "Temperature", data: tempSeries }]}
+          type="area"
+          height={350}
+        />
+        <Chart
+          options={{
+            ...options,
+            title: { text: "Humidity" },
+            colors: ["#7ac5cd"],
+            xaxis: {
+              ...options.xaxis,
+              categories: dates,
+            },
+          }}
+          series={[{ name: "Humidity", data: humSeries }]}
+          type="area"
+          height={350}
+        />
+        <Chart
+          options={{
+            ...options,
+            title: { text: "Light" },
+            colors: ["#ffb90f"],
+            xaxis: {
+              ...options.xaxis,
+              categories: dates,
+            },
+          }}
+          series={[{ name: "Light", data: lightSeries }]}
+          type="area"
+          height={350}
+        />
+      </div>
+    );
+        
 }
 
 export default App;
